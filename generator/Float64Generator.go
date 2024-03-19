@@ -17,7 +17,7 @@ func (f Float64Generator) GenerateSlice() []interface{} {
 	sliceSize := 10
 	sl := make([]interface{}, 0, sliceSize)
 	for i := 0; i < sliceSize; i++ {
-		sl = append(sl, rand.Float64())
+		sl = append(sl, f.Generate())
 	}
 	return sl
 }

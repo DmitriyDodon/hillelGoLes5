@@ -12,14 +12,14 @@ type StringGenerator struct {
 }
 
 func (s StringGenerator) Generate() interface{} {
-	return faker.Sentence()
+	return faker.Word()
 }
 
 func (s StringGenerator) GenerateSlice() []interface{} {
 	sliceSize := 10
 	sl := make([]interface{}, 0, sliceSize)
 	for i := 0; i < sliceSize; i++ {
-		sl = append(sl, faker.Word())
+		sl = append(sl, s.Generate())
 	}
 
 	return sl

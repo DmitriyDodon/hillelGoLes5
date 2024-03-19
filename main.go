@@ -12,6 +12,9 @@ import (
 const defaultParam = 10
 
 func main() {
+	logger, _ := zap.NewProduction()
+	defer logger.Sync() // flushes buffer, if any
+
 	param := flag.Int("param", defaultParam, "Enter int param value")
 
 	flag.Parse()
@@ -26,7 +29,7 @@ func main() {
 	for _, generator := range generatorsArray {
 		err := checkGenerator(generator, *param)
 		if err != nil {
-			zap.Error(err)
+			logger.Error(err.Error())
 		}
 		fmt.Print("\n\n")
 	}

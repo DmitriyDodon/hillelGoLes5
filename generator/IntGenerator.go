@@ -10,15 +10,14 @@ type IntGenerator struct {
 }
 
 func (i IntGenerator) Generate() interface{} {
-	return time.Now().Unix()
+	return generateRandomNumber(int(time.Now().Unix()))
 }
 
 func (i IntGenerator) GenerateSlice() []interface{} {
 	sliceSize := 10
 	sl := make([]interface{}, 0, sliceSize)
-	for i := 0; i < sliceSize; i++ {
-		randomValue := generateRandomNumber(int(time.Now().Unix()))
-		sl = append(sl, randomValue)
+	for ind := 0; ind < sliceSize; ind++ {
+		sl = append(sl, i.Generate())
 	}
 
 	return sl
